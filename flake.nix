@@ -10,7 +10,7 @@
         pkgs = import nixpkgs { inherit system overlays; };
       in {
         devShells.default = pkgs.mkShell {
-          nativeBuildInputs = with pkgs; [ nodePackages.pnpm ];
+          nativeBuildInputs = with pkgs; [ nodePackages.pnpm jq ];
           buildInputs = with pkgs; [ nodejs_20 ];
         };
       });
