@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
+  import { FontAwesomeIcon } from "@fortawesome/svelte-fontawesome";
   import { getLocalTimeZone, today, type DateValue } from "@internationalized/date";
   import { createCalendar, melt } from "@melt-ui/svelte";
 
@@ -26,11 +28,11 @@
     calendarLabel: label,
     isDateDisabled: defineDisabledDates,
     isDateUnavailable: defineUnavailableDates,
-    defaultValue: today(getLocalTimeZone()),
+    defaultValue: dateValue || today(getLocalTimeZone()),
   });
 
   $effect(() => {
-    dateValue = $value;
+    dateValue = $value!;
   });
 
   const capitalizeFirstCharacter = (text: string) => {
@@ -47,15 +49,15 @@
     <div class="flex justify-between gap-4">
       <button
         use:melt={$prevButton}
-        class="block rounded-lg p-1 transition-all hover:bg-ctp-red/20 aria-disabled:pointer-events-none aria-disabled:opacity-40"
+        class="block rounded-lg p-1 transition-all hover:bg-ctp-sapphire/20 aria-disabled:pointer-events-none aria-disabled:opacity-40"
       >
-        &lt;
+        <FontAwesomeIcon icon={faAngleLeft} class="flex h-5 w-5 items-center justify-center" />
       </button>
       <button
         use:melt={$nextButton}
-        class="block rounded-lg p-1 transition-all hover:bg-ctp-red/20 aria-disabled:pointer-events-none aria-disabled:opacity-40"
+        class="block rounded-lg p-1 transition-all hover:bg-ctp-sapphire/20 aria-disabled:pointer-events-none aria-disabled:opacity-40"
       >
-        &gt;
+        <FontAwesomeIcon icon={faAngleRight} class="flex h-5 w-5 items-center justify-center" />
       </button>
     </div>
   </header>
@@ -83,7 +85,7 @@
                 >
                   <div
                     use:melt={$cell(date, month.value)}
-                    class="flex h-6 w-6 cursor-pointer select-none items-center justify-center rounded-lg p-4 hover:bg-ctp-red/20 focus:ring focus:ring-ctp-red/15 aria-disabled:pointer-events-none aria-disabled:opacity-40 aria-selected:bg-ctp-red"
+                    class="flex h-6 w-6 cursor-pointer select-none items-center justify-center rounded-lg p-4 transition-all hover:bg-ctp-sapphire/20 focus:ring focus:ring-ctp-red/15 aria-disabled:pointer-events-none aria-disabled:opacity-40 aria-selected:bg-ctp-sapphire aria-selected:text-ctp-crust"
                   >
                     {date.day}
                   </div>
