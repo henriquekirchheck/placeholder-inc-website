@@ -1,5 +1,6 @@
 import catppuccin from "@catppuccin/tailwindcss";
 import typography from "@tailwindcss/typography";
+import forms from "@tailwindcss/forms";
 import type { Config } from "tailwindcss";
 
 export default {
@@ -11,5 +12,5 @@ export default {
     extend: {},
   },
 
-  plugins: [catppuccin({ prefix: "ctp" }), typography],
+  plugins: [catppuccin({ prefix: "ctp" }), typography, forms],
 } satisfies Config;
