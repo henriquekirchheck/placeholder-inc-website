@@ -1,7 +1,9 @@
 <script lang="ts">
-	import '../app.css';
+  import "../app.css";
 
-	const { children } = $props()
+  const { children } = $props();
 </script>
 
-{@render children()}
+<div class="ctp-latte h-screen w-screen bg-ctp-base text-ctp-text dark:ctp-mocha">
+  {@render children()}
+</div>
