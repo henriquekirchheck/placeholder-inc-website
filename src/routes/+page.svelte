@@ -4,10 +4,7 @@
   let date: CalendarDate = $state(today(getLocalTimeZone()));
 </script>
 
-<h1>Welcome to Svelte</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
-
-<p>{date?.toString()}</p>
+<h1 class="text-xl font-bold">{date?.toString()}</h1>
 <div class="w-96 rounded-xl bg-ctp-mantle">
   <Calendar
     minDateValue={today(getLocalTimeZone())}
