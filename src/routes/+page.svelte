@@ -10,7 +10,8 @@
 <p>{date?.toString()}</p>
 <div class="w-96 rounded-xl bg-ctp-mantle">
   <Calendar
-    defineDisabledDates={(date) => date.compare(today(getLocalTimeZone())) < 0}
+    minDateValue={today(getLocalTimeZone())}
+    maxDateValue={today(getLocalTimeZone()).add({months: 1, weeks: 2})}
     bind:dateValue={date}
   />
 </div>

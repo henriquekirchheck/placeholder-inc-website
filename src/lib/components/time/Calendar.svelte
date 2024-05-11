@@ -7,11 +7,17 @@
   let {
     label,
     dateValue = $bindable(),
+    maxDateValue: maxValue,
+    minDateValue: minValue,
+    disabled,
     defineDisabledDates,
     defineUnavailableDates,
   }: {
     label?: string;
     dateValue?: DateValue;
+    minDateValue?: DateValue;
+    maxDateValue?: DateValue;
+    disabled?: boolean;
     defineDisabledDates?: (date: DateValue) => boolean;
     defineUnavailableDates?: (date: DateValue) => boolean;
   } = $props();
@@ -28,6 +34,9 @@
     calendarLabel: label,
     isDateDisabled: defineDisabledDates,
     isDateUnavailable: defineUnavailableDates,
+    minValue,
+    maxValue,
+    disabled,
     defaultValue: dateValue || today(getLocalTimeZone()),
   });
 
