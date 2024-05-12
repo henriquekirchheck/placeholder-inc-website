@@ -15,7 +15,7 @@
     onsubmit?: EventHandler<SubmitEvent, HTMLFormElement>;
   } = $props();
 
-  let valid = $state(false);
+  let valid = $state(true);
 </script>
 
 <form {onsubmit} class="flex w-96 flex-col justify-between gap-8 rounded-xl bg-ctp-mantle p-5">
