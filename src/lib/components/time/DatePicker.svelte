@@ -1,12 +1,18 @@
 <script lang="ts">
   import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
   import { FontAwesomeIcon } from "@fortawesome/svelte-fontawesome";
-  import { getLocalTimeZone, today, type DateValue } from "@internationalized/date";
+  import {
+    ZonedDateTime,
+    getLocalTimeZone,
+    isToday,
+    today,
+    type DateValue,
+  } from "@internationalized/date";
   import { createCalendar, melt } from "@melt-ui/svelte";
 
   let {
     label,
-    dateValue = $bindable(),
+    date = $bindable(),
     maxDateValue: maxValue,
     minDateValue: minValue,
     disabled,
@@ -14,8 +20,8 @@
     defineUnavailableDates,
   }: {
     label?: string;
-    dateValue?: DateValue;
-    minDateValue?: DateValue;
+    date: ZonedDateTime;
+    minDateValue: ZonedDateTime;
     maxDateValue?: DateValue;
     disabled?: boolean;
     defineDisabledDates?: (date: DateValue) => boolean;
@@ -34,14 +40,16 @@
     calendarLabel: label,
     isDateDisabled: defineDisabledDates,
     isDateUnavailable: defineUnavailableDates,
-    minValue,
+    minValue: isToday(minValue, minValue.timeZone)
+      ? today(getLocalTimeZone())
+      : today(getLocalTimeZone()).add({ days: 1 }),
     maxValue,
     disabled,
-    defaultValue: dateValue || today(getLocalTimeZone()),
+    defaultValue: date,
   });
 
   $effect(() => {
-    dateValue = $value!;
+    date = $value!;
   });
 
   const capitalizeFirstCharacter = (text: string) => {
@@ -52,8 +60,8 @@
   };
 </script>
 
-<div use:melt={$calendar} class="flex w-full flex-col gap-2 p-4 shadow-sm">
-  <header class="flex items-center justify-between p-2">
+<div use:melt={$calendar} class="flex w-full flex-col gap-4">
+  <header class="flex items-center justify-between">
     <div use:melt={$heading} class="font-bold">{capitalizeFirstCharacter($headingValue)}</div>
     <div class="flex justify-between gap-4">
       <button

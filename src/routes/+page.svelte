@@ -1,14 +1,12 @@
-<script lang="ts">
-  import { Calendar } from "$lib/components/time";
-  import { getLocalTimeZone, today, type CalendarDate } from "@internationalized/date";
-  let date: CalendarDate = $state(today(getLocalTimeZone()));
+<script>
+  import Reservation from "$lib/components/Reservation.svelte";
+  import { getLocalTimeZone, now } from "@internationalized/date";
+
+  let dateTime = $state(
+    now(getLocalTimeZone()).add({ hours: 2 }).set({ second: 0, millisecond: 0 })
+  );
 </script>
 
-<h1 class="text-xl font-bold">{date?.toString()}</h1>
-<div class="w-96 rounded-xl bg-ctp-mantle">
-  <Calendar
-    minDateValue={today(getLocalTimeZone())}
-    maxDateValue={today(getLocalTimeZone()).add({months: 1, weeks: 2})}
-    bind:dateValue={date}
-  />
+<div class="p-4">
+  <Reservation bind:dateTime/>
 </div>

@@ -9,6 +9,12 @@
   const { children } = $props();
 </script>
 
-<div class="ctp-latte h-screen w-screen bg-ctp-crust text-ctp-text dark:ctp-mocha">
+<div class="h-screen w-screen overflow-y-auto">
   {@render children()}
 </div>
+
+<style lang="postcss">
+  :global(body) {
+    @apply ctp-latte bg-ctp-crust text-ctp-text dark:ctp-mocha;
+  }
+</style>
