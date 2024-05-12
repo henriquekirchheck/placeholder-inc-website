@@ -63,8 +63,6 @@
       class="flex h-full w-full items-center justify-between rounded-lg border-none bg-ctp-surface0 p-1 text-center text-3xl text-ctp-text"
       placeholder={placeholder.padStart(2, "0")}
       inputmode="numeric"
-      pattern="\d"
-      required
       oninput={(e) => {
         timeUnit.value = e.currentTarget.value;
         e.currentTarget.value = String(timeUnit.value).padStart(2, "0");
