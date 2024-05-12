@@ -26,7 +26,7 @@
       bind:date={dateTime}
     />
     <div class="flex items-center justify-between">
-      <span class="text-2xl">Tempo:</span>
+      <span class="text-2xl">Horário:</span>
       <HourPicker minimumTimeValue={minimumTime} bind:time={dateTime} bind:valid />
     </div>
   </div>
