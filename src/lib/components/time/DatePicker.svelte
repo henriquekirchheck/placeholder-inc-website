@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
-  import { FontAwesomeIcon } from "@fortawesome/svelte-fontawesome";
+  import { FaAngleLeft, FaAngleRight } from "$lib/assets/icons/fontAwesome";
   import {
     ZonedDateTime,
     getLocalTimeZone,
@@ -68,13 +67,13 @@
         use:melt={$prevButton}
         class="block rounded-lg p-1 transition-all hover:bg-ctp-sapphire/20 aria-disabled:pointer-events-none aria-disabled:opacity-40"
       >
-        <FontAwesomeIcon icon={faAngleLeft} class="flex h-5 w-5 items-center justify-center" />
+        <FaAngleLeft class="flex h-5 w-5 items-center justify-center" />
       </button>
       <button
         use:melt={$nextButton}
         class="block rounded-lg p-1 transition-all hover:bg-ctp-sapphire/20 aria-disabled:pointer-events-none aria-disabled:opacity-40"
       >
-        <FontAwesomeIcon icon={faAngleRight} class="flex h-5 w-5 items-center justify-center" />
+        <FaAngleRight class="flex h-5 w-5 items-center justify-center" />
       </button>
     </div>
   </header>
