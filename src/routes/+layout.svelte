@@ -6,12 +6,14 @@
   import "@fontsource/poppins";
   // Supports weights 400-700
   import "@fontsource-variable/dancing-script";
+  import type { Snippet } from "svelte";
+  import type { LayoutData } from "./$types";
 
-  const { children } = $props();
+  const { children, data }: { children: Snippet; data: LayoutData } = $props();
 </script>
 
-<div class="min-w-dvw grid min-h-dvh grid-cols-1 layout overflow-y-auto">
-  <Header />
+<div class="min-w-dvw layout grid min-h-dvh grid-cols-1 overflow-y-auto">
+  <Header pathname={data.pathname} />
   {@render children()}
 </div>
 

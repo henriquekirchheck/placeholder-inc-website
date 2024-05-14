@@ -1,11 +1,13 @@
 <script lang="ts">
+  import { page } from "$app/stores";
+  import Navigation from "./Navigation.svelte";
   import { FaPizzaSlice } from "$lib/assets/icons/fontAwesome";
   import WigglySeparator from "$lib/assets/wigglySeparator.svelte";
   import { identicon } from "@dicebear/collection";
   import { createAvatar } from "@dicebear/core";
   import type { HTMLAttributes } from "svelte/elements";
 
-  const { class: className, ...props }: HTMLAttributes<HTMLDivElement> = $props();
+  const { class: className, pathname, ...props }: HTMLAttributes<HTMLDivElement> & {pathname: string} = $props();
   const avatar = createAvatar(identicon, {
     seed: "Test Seed",
     size: 120,
@@ -18,6 +20,7 @@
       <FaPizzaSlice class="text-3xl text-ctp-red sm:text-4xl" />
       <span class="font-dancing-script text-2xl font-bold sm:text-3xl">Placeholder Inc.</span>
     </div>
+    <Navigation {pathname} />
     <div class="flex items-center justify-between gap-3 p-2 font-poppins sm:p-3">
       <span>&lbrace;name&rbrace;</span>
       <img src={avatar} class="w-8 rounded-lg sm:w-10" alt="Avatar" />
