@@ -101,7 +101,7 @@
                 >
                   <div
                     use:melt={$cell(date, month.value)}
-                    class="flex h-6 w-6 cursor-pointer select-none items-center justify-center rounded-lg p-4 transition-all hover:bg-ctp-sapphire/20 focus:ring focus:ring-ctp-red/15 aria-disabled:pointer-events-none aria-disabled:opacity-40 aria-selected:bg-ctp-sapphire aria-selected:text-ctp-crust"
+                    class="flex text-xl h-6 w-6 cursor-pointer select-none items-center justify-center rounded-lg p-5 transition-all hover:bg-ctp-sapphire/20 focus:ring focus:ring-ctp-red/15 aria-disabled:pointer-events-none aria-disabled:opacity-40 aria-selected:bg-ctp-sapphire aria-selected:text-ctp-crust sm:p-7 sm:text-2xl"
                   >
                     {date.day}
                   </div>

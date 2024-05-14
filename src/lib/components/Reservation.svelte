@@ -9,16 +9,21 @@
       .set({ second: 0, millisecond: 0 }),
     dateTime = $bindable(),
     onsubmit,
+    class: className,
   }: {
     minimumTime?: ZonedDateTime;
     dateTime: ZonedDateTime;
     onsubmit?: EventHandler<SubmitEvent, HTMLFormElement>;
+    class?: string;
   } = $props();
 
   let valid = $state(true);
 </script>
 
-<form {onsubmit} class="flex w-96 flex-col justify-between gap-8 rounded-xl bg-ctp-mantle p-5">
+<form
+  {onsubmit}
+  class={`flex flex-col justify-around gap-8 rounded-xl bg-ctp-mantle p-5 ${className}`}
+>
   <div class="flex flex-col justify-between gap-6 rounded-xl bg-ctp-mantle">
     <DatePicker
       minDateValue={minimumTime}

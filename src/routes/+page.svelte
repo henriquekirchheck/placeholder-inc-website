@@ -7,6 +7,6 @@
   );
 </script>
 
-<div class="p-4">
-  <Reservation bind:dateTime/>
+<div class="flex flex-col justify-between gap-8 p-4 sm:flex-row">
+  <Reservation bind:dateTime class="h-fit w-full sm:h-full sm:min-w-80 sm:max-w-md" />
 </div>
